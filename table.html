@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <script>
+            function func()
+            {
+                t = document.getElementById("t1");
+                row = t.insertRow(t.rows.length)
+                d1 = row.insertCell(0)
+                d2 = row.insertCell(1)
+                d3 = row.insertCell(2)
+                d4 = row.insertCell(3)
+                d1.innerHTML = document.getElementById("name").value;
+                d2.innerHTML = document.getElementById("m1").value;
+                d3.innerHTML = document.getElementById("m2").value;
+                d4.innerHTML = document.getElementById("m3").value;
+            }
+        </script>
+    </head>
+    <body>
+        Name :<input type="text" id="name"><br>
+        Marks1<input type="text" id="m1"><br>
+        Marks2<input type="text" id="m2"><br>
+        Marks3<input type="text" id="m3"><br>
+        <input type="button" value="submit" onclick="func()">
+        <br><br>
+
+        <table border="1" id="t1">
+            <tr>
+                <td>Name</td>
+                <td>Marks1</td>
+                <td>Marks2</td>
+                <td>Marks3</td>
+            </tr>
+            
+        </table>
+    </body>
+</html>
