@@ -31,12 +31,36 @@
                 }
                 return 0;
             }
-
-            function sortFunc()
+            function compareM1(a, b) 
             {
-                arr1.sort(compareName)
-                remove1()
-                disp();
+                let m1 = a.m1;
+                let m2 = b.m1;
+                return m1-m2
+            }
+            function compareM2(a, b) 
+            {
+                let m1 = a.m2;
+                let m2 = b.m2;
+                return m1-m2
+            }
+
+            function sortFunc(x)
+            {
+                if(x=='name'){
+                    arr1.sort(compareName)
+                    remove1()
+                    disp();
+                }
+                else if(x=='m1'){
+                    arr1.sort(compareM1)
+                    remove1()
+                    disp();
+                }
+                else if(x=='m2'){
+                    arr1.sort(compareM2)
+                    remove1()
+                    disp();
+                }
             }
             function reverseSortFunc()
             {
@@ -89,18 +113,19 @@
             <tr>
                 <th>
                     Name
-                    <button onclick="sortFunc()">&uarr;</button>
-                    <button onclick="reverseSortFunc()">&darr;</button>
+                    <button onclick="sortFunc('name')">&uarr;</button>
+                    <button onclick="reverseSortFunc('name')">&darr;</button>
                 </th>
                 <th>
+
                     Marks1
-                    <button onclick="sortFunc()">&uarr;</button>
-                    <button onclick="reverseSortFunc()">&darr;</button>
+                    <button onclick="sortFunc('m1')">&uarr;</button>
+                    <button onclick="reverseSortFunc('m1')">&darr;</button>
                 </th>
                 <th>
                     Marks2
-                    <button onclick="sortFunc()">&uarr;</button>
-                    <button onclick="reverseSortFunc()">&darr;</button>
+                    <button onclick="sortFunc('m2')">&uarr;</button>
+                    <button onclick="reverseSortFunc('m2')">&darr;</button>
                 </th>
             </tr>
 
