@@ -32,9 +32,15 @@
                 return 0;
             }
 
-            function sortfunc()
+            function sortFunc()
             {
                 arr1.sort(compareName)
+                remove1()
+                disp();
+            }
+            function reverseSortFunc()
+            {
+                arr1.reverse(compareName)
                 remove1()
                 disp();
             }
@@ -71,7 +77,8 @@
         Marks1<input type="text" id="m1">
         Marks2<input type="text" id="m2">
         <input type="button" value="submit" onclick="add()">
-        <input type="button" value="Sort" onclick="sortfunc()">
+        <input type="button" value="Sort" onclick="sortFunc()">
+        <input type="button" value="Reverse" onclick="reverseSortFunc()">
         <input type="button" value="remove" onclick="deleteContent()">     
         <br><br>
         <p id="demo"></p>
