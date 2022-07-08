@@ -77,8 +77,11 @@
         Marks1<input type="text" id="m1">
         Marks2<input type="text" id="m2">
         <input type="button" value="submit" onclick="add()">
+       <!--
         <input type="button" value="Sort" onclick="sortFunc()">
         <input type="button" value="Reverse" onclick="reverseSortFunc()">
+       -->
+        
         <input type="button" value="remove" onclick="deleteContent()">     
         <br><br>
         <p id="demo"></p>
@@ -89,9 +92,18 @@
                     <button onclick="sortFunc()">&uarr;</button>
                     <button onclick="reverseSortFunc()">&darr;</button>
                 </th>
-                <th>Marks1</th>
-                <th>Marks2</th>
+                <th>
+                    Marks1
+                    <button onclick="sortFunc()">&uarr;</button>
+                    <button onclick="reverseSortFunc()">&darr;</button>
+                </th>
+                <th>
+                    Marks2
+                    <button onclick="sortFunc()">&uarr;</button>
+                    <button onclick="reverseSortFunc()">&darr;</button>
+                </th>
             </tr>
+
         </table>
         <table border="1" id="t2" style="width:800px">
         </table>
