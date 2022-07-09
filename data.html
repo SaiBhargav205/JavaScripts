@@ -142,13 +142,13 @@
         </script>
     </head>
     <body>
-        Roll-No :<input type="text" id="name">
+        Name :<input type="text" id="name">
         Marks1<input type="text" id="m1">
         Marks2<input type="text" id="m2">
         <button  onclick="add()"> Submit </button>
         <button onclick="deleteContent()">  remove  </button> 
         <br>
-        Search<input type="text" id="srch" placeholder="enter roll num">
+        Search<input type="text" id="srch" placeholder="enter name">
         <button onclick="searchData()">  Search </button>  
         <br>
         <p id="demo"></p>
@@ -156,7 +156,7 @@
             <thead>
                 <tr class="bg-info">
                     <th style="width:25%">
-                        Roll Number
+                        Name
                         <button onclick="sortFunc('name');this.disabled=true;" id="asc_name">&uarr;</button>
                         <button onclick="reverseSortFunc('name');" id="desc_name">&darr;</button>
                     </th>
