@@ -1,11 +1,23 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+    th{ 
+        color:#fff;
+            }
+    body{
+        background-color: darkgray;
+    }
+    
+</style>
+
 <html>
     <head>
         <script>
             class data{
-                constructor(name, m1, m2){
+                constructor(name, m1, m2, id){
                     this.name = name;
                     this.m1 = m1;
                     this.m2 = m2;
+                    this.id = id;
                 }
             }
             var arr1 = []
@@ -15,11 +27,15 @@
                 n = document.getElementById("name").value;
                 m1 = document.getElementById("m1").value;
                 m2 = document.getElementById("m2").value;
-                arr1.push(new data(n, parseInt(m1), parseInt(m2)))
+                len = arr1.length;
+                arr1.push(new data(n, parseInt(m1), parseInt(m2), len+1))
                 remove1()
                 disp()
             }
+            function deleteEntry()
+            {
 
+            }
             function compareName(a, b) 
             {
                 let name1 = a.name.toUpperCase();
@@ -43,30 +59,50 @@
                 let m2 = b.m2;
                 return m1-m2
             }
-
             function sortFunc(x)
             {
                 if(x=='name'){
                     arr1.sort(compareName)
                     remove1()
                     disp();
+                    document.getElementById('asc_name').disabled=true;
+                    document.getElementById('desc_name').disabled=false;
                 }
                 else if(x=='m1'){
                     arr1.sort(compareM1)
                     remove1()
                     disp();
+                    document.getElementById('asc_m1').disabled=true;
+                    document.getElementById('desc_m1').disabled=false;
                 }
                 else if(x=='m2'){
                     arr1.sort(compareM2)
                     remove1()
                     disp();
+                    document.getElementById('desc_m2').disabled=false;
                 }
             }
-            function reverseSortFunc()
+
+            function reverseSortFunc(x)
             {
-                arr1.reverse(compareName)
-                remove1()
-                disp();
+                if(x=='name'){
+                    arr1.sort(compareName).reverse()
+                    remove1()
+                    disp();
+                    document.getElementById('asc_name').disabled=false;
+                }
+                else if(x=='m1'){
+                    arr1.sort(compareM1).reverse()
+                    remove1()
+                    disp();
+                    document.getElementById('asc_m1').disabled=false;
+                }
+                else if(x=='m2'){
+                    arr1.sort(compareM2).reverse()
+                    remove1()
+                    disp();
+                    document.getElementById('asc_m2').disabled=false;
+                }
             }
             function remove1()
             {
@@ -82,7 +118,6 @@
             {
                 remove1()
                 table = document.getElementById('t2')
-                
                 for(var i = 0; i < arr1.length; i++)
                 {
                     let obj = arr1[i]
@@ -92,45 +127,57 @@
                         var cell = newRow.insertCell(j);
                         cell.innerHTML = Object.values(obj)[j];
                     }
+                    cell.innerHTML = "<button>Delete</button>"
                 }
+            }
+            function searchData()
+            {
+                rnum = document.getElementById("srch").value;  
+                var i = arr1.findIndex(obj=>obj.name==rnum)
+                if(i>=0)
+                    alert("roll no :"+Object.values(arr1[i])[0]+"   m1 :"+Object.values(arr1[i])[1]+"    m2 :"+Object.values(arr1[i])[2])
+                else
+                    alert("data not found")
             }
         </script>
     </head>
     <body>
-        Name :<input type="text" id="name">
+        Roll-No :<input type="text" id="name">
         Marks1<input type="text" id="m1">
         Marks2<input type="text" id="m2">
-        <input type="button" value="submit" onclick="add()">
-       <!--
-        <input type="button" value="Sort" onclick="sortFunc()">
-        <input type="button" value="Reverse" onclick="reverseSortFunc()">
-       -->
-        
-        <input type="button" value="remove" onclick="deleteContent()">     
-        <br><br>
+        <button  onclick="add()"> Submit </button>
+        <button onclick="deleteContent()">  remove  </button> 
+        <br>
+        Search<input type="text" id="srch" placeholder="enter roll num">
+        <button onclick="searchData()">  Search </button>  
+        <br>
         <p id="demo"></p>
-        <table id="t1" style="width:800px">
-            <tr>
-                <th>
-                    Name
-                    <button onclick="sortFunc('name')">&uarr;</button>
-                    <button onclick="reverseSortFunc('name')">&darr;</button>
-                </th>
-                <th>
+        <table id="t1" style="width:900px" border="1" class="table table-striped">
+            <thead>
+                <tr class="bg-info">
+                    <th style="width:25%">
+                        Name
+                        <button onclick="sortFunc('name');this.disabled=true;" id="asc_name">&uarr;</button>
+                        <button onclick="reverseSortFunc('name');" id="desc_name">&darr;</button>
+                    </th>
+                    <th style="width:25%">
 
-                    Marks1
-                    <button onclick="sortFunc('m1')">&uarr;</button>
-                    <button onclick="reverseSortFunc('m1')">&darr;</button>
-                </th>
-                <th>
-                    Marks2
-                    <button onclick="sortFunc('m2')">&uarr;</button>
-                    <button onclick="reverseSortFunc('m2')">&darr;</button>
-                </th>
-            </tr>
-
-        </table>
-        <table border="1" id="t2" style="width:800px">
+                        Marks1
+                        <button onclick="sortFunc('m1');this.disabled=true;" id="asc_m1">&uarr;</button>
+                        <button onclick="reverseSortFunc('m1');" id="desc_m1">&darr;</button>
+                    </th>
+                    <th style="width:25%">
+                        Marks2
+                        <button onclick="sortFunc('m2');this.disabled=true;" id="asc_m2">&uarr;</button>
+                        <button onclick="reverseSortFunc('m2');" id="desc_m2">&darr;</button>
+                    </th>
+                    <th style="width:25%">
+                        
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="t2">
+            </tbody>
         </table>
     </body>
 </html>
