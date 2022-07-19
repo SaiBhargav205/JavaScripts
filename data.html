@@ -67,6 +67,10 @@
                     disp();
                     document.getElementById('asc_name').disabled=true;
                     document.getElementById('desc_name').disabled=false;
+                    document.getElementById('asc_m1').disabled=false;
+                    document.getElementById('desc_m1').disabled=false;
+                    document.getElementById('asc_m2').disabled=false;
+                    document.getElementById('desc_m2').disabled=false;
                 }
                 else if(x=='m1'){
                     arr1.sort(compareM1)
@@ -74,6 +78,7 @@
                     disp();
                     document.getElementById('asc_m1').disabled=true;
                     document.getElementById('desc_m1').disabled=false;
+                    
                 }
                 else if(x=='m2'){
                     arr1.sort(compareM2)
@@ -90,6 +95,11 @@
                     remove1()
                     disp();
                     document.getElementById('asc_name').disabled=false;
+                    document.getElementById('desc_name').disabled=true;
+                    document.getElementById('asc_m1').disabled=false;
+                    document.getElementById('desc_m1').disabled=false;
+                    document.getElementById('asc_m2').disabled=false;
+                    document.getElementById('desc_m2').disabled=false;
                 }
                 else if(x=='m1'){
                     arr1.sort(compareM1).reverse()
@@ -132,8 +142,8 @@
             }
             function searchData()
             {
-                rnum = document.getElementById("srch").value;  
-                var i = arr1.findIndex(obj=>obj.name==rnum)
+                srch_name = document.getElementById("srch").value;  
+                var i = arr1.findIndex(obj=>obj.name==srch_name)
                 if(i>=0)
                     alert("roll no :"+Object.values(arr1[i])[0]+"   m1 :"+Object.values(arr1[i])[1]+"    m2 :"+Object.values(arr1[i])[2])
                 else
@@ -158,21 +168,19 @@
                     <th style="width:25%">
                         Name
                         <button onclick="sortFunc('name');this.disabled=true;" id="asc_name">&uarr;</button>
-                        <button onclick="reverseSortFunc('name');" id="desc_name">&darr;</button>
+                        <button onclick="reverseSortFunc('name');this.disabled=true;" id="desc_name">&darr;</button>
                     </th>
                     <th style="width:25%">
-
                         Marks1
                         <button onclick="sortFunc('m1');this.disabled=true;" id="asc_m1">&uarr;</button>
-                        <button onclick="reverseSortFunc('m1');" id="desc_m1">&darr;</button>
+                        <button onclick="reverseSortFunc('m1');this.disabled=true;" id="desc_m1">&darr;</button>
                     </th>
                     <th style="width:25%">
                         Marks2
                         <button onclick="sortFunc('m2');this.disabled=true;" id="asc_m2">&uarr;</button>
-                        <button onclick="reverseSortFunc('m2');" id="desc_m2">&darr;</button>
+                        <button onclick="reverseSortFunc('m2');this.disabled=true;" id="desc_m2">&darr;</button>
                     </th>
                     <th style="width:25%">
-                        
                     </th>
                 </tr>
             </thead>
